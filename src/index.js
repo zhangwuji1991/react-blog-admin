@@ -4,6 +4,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route} from 'react-router-dom'
 
+// mock数据
+import './mock';
+
 // antd样式
 import 'antd/dist/antd.less';
 
