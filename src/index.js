@@ -1,8 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// 兼容ie
+import 'babel-polyfill';
+
+// 在跟组件通过Provider中间件注入store
+import { Provider } from 'mobx-react';
+import store from './store';
+
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter, Route} from 'react-router-dom'
 
 // mock数据
 import './mock';
@@ -10,17 +18,11 @@ import './mock';
 // antd样式
 import 'antd/dist/antd.less';
 
-const Root = () => {
-    return (
-        <BrowserRouter basename='/'>
-            <Route path={`/`} component={App}></Route>
-        </BrowserRouter>
-    )
-
-}
 
 ReactDOM.render(
-	<Root/>, 
+    <Provider { ...store }>
+      <App/>
+    </Provider>,
 	document.getElementById('root')
 );
 

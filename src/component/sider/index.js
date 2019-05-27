@@ -1,19 +1,20 @@
 import React from 'react';
 import { getMenu } from '@/api';
 import Menu from './menu';
-import './index.less'
+import { withRouter } from 'react-router-dom';
+import './index.less';
 
-const SubMenu = Menu.SubMenu;
 
-export default class App extends React.Component {
+
+export default @withRouter class App extends React.Component {
   state = {
-    collapsed: false,
-    menuList: []
+    menuList: [],
+    openKeys: [],
+    selectedKeys: []
   };
 
   initData = async() => {
     const res = await getMenu()
-    console.log(res)
     this.setState({
       menuList : res.data 
     })
@@ -24,6 +25,10 @@ export default class App extends React.Component {
       collapsed: !this.state.collapsed,
     });
   };
+
+  menuClickHandle= (e) => {
+     this.props.history.push(e.key);
+  }
   componentDidMount() {
     this.initData()
   }

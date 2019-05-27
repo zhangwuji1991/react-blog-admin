@@ -82,7 +82,7 @@ export const data = [
     children: [
       {
         name: '个人中心',
-        route: '/admin/tool/chat'
+        route: '/admin/user'
       }
     ]
   }
